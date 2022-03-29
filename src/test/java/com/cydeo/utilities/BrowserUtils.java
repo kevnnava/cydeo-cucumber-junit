@@ -1,5 +1,6 @@
 package com.cydeo.utilities;
 
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -70,7 +71,6 @@ public class BrowserUtils {
      *
      * @param expectedInURL
      */
-
     public static void verifyURLContains(String expectedInURL) {
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(expectedInURL));
     }
@@ -81,7 +81,6 @@ public class BrowserUtils {
      * @param dropdownElement
      * @return List<String> actualOptionsAsString
      */
-
     public static List<String> dropdownOptionsAsString(WebElement dropdownElement) {
         Select select = new Select(dropdownElement);
 
@@ -95,6 +94,17 @@ public class BrowserUtils {
             actualOptionsAsString.add(each.getText());
         }
         return actualOptionsAsString;
+    }
+
+    public static void clickRadioButton(List<WebElement> radioButtons, String attributeValue){
+
+            for (WebElement each : radioButtons) {
+
+                if (each.getAttribute("value").equalsIgnoreCase(attributeValue)){
+                    each.click();
+                }
+
+            }
     }
 
 }
